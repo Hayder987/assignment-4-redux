@@ -11,8 +11,17 @@ export const bookApi = createApi({
       query: () => '/books',
       providesTags: ['Books'],
     }),
+    
+    createBook: builder.mutation<IBook, Partial<IBook>>({
+      query: (book) => ({
+        url: '/books',
+        method: 'POST',
+        body: book,
+      }),
+      invalidatesTags: ['Books'],
+    }),
 
     })
 })
 
-export const {useGetBooksQuery} = bookApi;
+export const {useGetBooksQuery, useCreateBookMutation} = bookApi;
