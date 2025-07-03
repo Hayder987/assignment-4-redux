@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router";
 
 const AllBooks = () => {
   const { data, isLoading } = useGetBooksQuery(undefined,{
@@ -26,7 +27,7 @@ const AllBooks = () => {
   return (
     <div className="p-4">
       <div className="py-6 flex justify-end ">
-        <button className="bg-blue-700 cursor-pointer text-white px-4 py-1 rounded-sm">Add Book</button>
+        <Link to={'/create-book'}><button className="bg-blue-700 cursor-pointer text-white px-4 py-1 rounded-sm">Add Book</button></Link>
       </div>
       <h2 className="text-2xl font-semibold mb-4">All Books</h2>
       <div className="border rounded-lg overflow-x-auto">
@@ -58,7 +59,7 @@ const AllBooks = () => {
                   )}
                 </TableCell>
                 <TableCell className="flex gap-3">
-                  <button className="text-blue-600 cursor-pointer text-2xl"><FaEdit /></button>
+                  <Link to={`/edit-book/${book?._id}`}><button className="text-blue-600 cursor-pointer text-2xl"><FaEdit /></button></Link>
                   <button className="text-red-600 cursor-pointer text-2xl"><RiDeleteBin6Fill /></button>
                   <button className="bg-green-700 rounded-md cursor-pointer text-white hover:underline py-1 px-2 ">Borrow</button>
                 </TableCell>
