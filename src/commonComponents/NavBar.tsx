@@ -3,7 +3,7 @@ import { NavLink } from "react-router"
 
 const NavBar = () => {
   return (
-    <nav className="flex justify-between items-center">
+    <nav className="flex justify-between items-center bg-blue-200 py-6 px-3">
         <div className="">
             <p className="text-xl font-semibold md:text-3xl">📚 Library</p>
         </div>
