@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,9 +22,13 @@ const genreOptions = [
 
 const EditBooks = () => {
   const { id } = useParams();
-  const { data: bookData, isLoading } = useGetBookByIdQuery(id);
+  const { data: bookData, isLoading } = useGetBookByIdQuery(id,{
+    refetchOnFocus:true,
+    refetchOnMountOrArgChange:true
+  });
   const [updateBook, { isLoading: isUpdating }] = useUpdateBookMutation();
-
+  const navigate = useNavigate();
+  console.log(bookData)
   const {
     register,
     handleSubmit,
@@ -32,9 +36,18 @@ const EditBooks = () => {
     formState: { errors },
   } = useForm<IBook>();
 
+  // Set default values when bookData is loaded
   useEffect(() => {
-    if (bookData?.data) {
-      reset(bookData.data);
+    if (bookData) {
+      reset({
+        title: bookData.data?.title,
+        author: bookData.data?.author,
+        genre: bookData.data?.genre,
+        isbn: bookData.data?.isbn,
+        description: bookData.data?.description,
+        copies: bookData.data?.copies,
+        available: bookData.data?.available,
+      });
     }
   }, [bookData, reset]);
 
@@ -46,6 +59,7 @@ const EditBooks = () => {
       };
       await updateBook({ id, data: finalData }).unwrap();
       toast.success("Book updated successfully!");
+      navigate('/');
     } catch (error) {
       toast.error("Failed to update book");
     }

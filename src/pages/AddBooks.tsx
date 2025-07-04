@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "react-toastify";
 import type { IBook } from "@/types/bookTypes";
 import { useCreateBookMutation } from "@/redux/api/bookApi";
+import { useNavigate } from "react-router";
 
 const AddBooks = () => {
   const {
@@ -22,6 +23,7 @@ const AddBooks = () => {
   });
 
   const [addBook, { isLoading }] = useCreateBookMutation();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -33,6 +35,7 @@ const AddBooks = () => {
       await addBook(finalData).unwrap();
       toast.success("Book added successfully!");
       reset();
+      navigate('/');
     } catch (error) {
       toast.error("Failed to add book");
     }
