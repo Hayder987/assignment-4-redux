@@ -4,7 +4,7 @@ import { FadeLoader } from "react-spinners"
 const LoaderSpinner = () => {
   return (
     <div className="flex justify-center p-3">
-       <FadeLoader /> 
+       <FadeLoader color="#0000FF"/> 
     </div>
   )
 }

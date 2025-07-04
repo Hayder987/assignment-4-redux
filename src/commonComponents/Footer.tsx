@@ -28,8 +28,8 @@ const Footer = () => {
             <h3 className="text-white text-lg font-semibold mb-3">Contact</h3>
             <ul className="text-sm space-y-2">
               <li>Email: <a href="mailto:hayderbd4290@gmail.com" className="hover:underline">hayderbd4290@gmail.com</a></li>
-              <li>Phone: +880 123 456 789</li>
-              <li>Location: Dhaka, Bangladesh</li>
+              <li>Phone: +8801771814597</li>
+              <li>Location: Pabna, Bangladesh</li>
             </ul>
           </div>
 
