@@ -7,7 +7,7 @@ export const bookApi = createApi({
       baseQuery: fetchBaseQuery({ baseUrl: 'https://libarary-db.vercel.app/api' }),
       tagTypes: ['Books'],
       endpoints: (builder) => ({
-      getBooks: builder.query<IBook[], void>({
+      getBooks: builder.query({
       query: () => '/books',
       providesTags: ['Books'],
     }),

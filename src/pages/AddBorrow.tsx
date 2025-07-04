@@ -11,7 +11,7 @@ import { useNavigate, useParams } from "react-router";
 
 
 type BorrowFormData = {
-  book?:string,
+  book:string,
   quantity: number;
   dueDate: string;
 };
@@ -61,8 +61,7 @@ const AddBorrow = () => {
       }).unwrap();
       toast.success("✅ Book borrowed successfully!");
       navigate("/borrow-summary");
-    } catch (error: any) {
-      console.error(error);
+    } catch (error) {
       toast.error("❌ Failed to borrow the book.");
     }
   };

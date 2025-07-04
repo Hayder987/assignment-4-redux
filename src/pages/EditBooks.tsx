@@ -20,9 +20,11 @@ const genreOptions = [
   "FANTASY",
 ];
 
+
 const EditBooks = () => {
-  const { id } = useParams();
-  const { data: bookData, isLoading } = useGetBookByIdQuery(id,{
+  const param = useParams();
+  const id : string = param.id || ''
+  const { data: bookData, isLoading } = useGetBookByIdQuery(id, {
     refetchOnFocus:true,
     refetchOnMountOrArgChange:true
   });
@@ -57,6 +59,7 @@ const EditBooks = () => {
         ...data,
         available: data.copies > 0,
       };
+      if (!id) return;
       await updateBook({ id, data: finalData }).unwrap();
       toast.success("Book updated successfully!");
       navigate('/');

@@ -1,6 +1,5 @@
-export interface IBorrow{
-    _id?:string,
-    book:string,
-    quantity: number,
-    dueDate: Date
+export interface BorrowPayload {
+  book: string;
+  quantity: number;
+  dueDate: string;
 }

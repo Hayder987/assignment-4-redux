@@ -27,7 +27,7 @@ const AllBooks = () => {
   }
 
   // delete handler---------------------------->
-  const deleteHandler = (id) => {
+  const deleteHandler = (id:string) => {
     try {
       Swal.fire({
         title: "Are you sure?",
@@ -48,11 +48,13 @@ const AllBooks = () => {
         }
       });
     } catch (error) {
-      toast.error("Failed to delete book.");
+      toast.error("can't delete book");
     }
   };
 
-  const books: IBook[] = data?.data ?? [];
+  const books = data ?? [];
+  console.log(books)
+
 
   return (
     <div className="p-4">
@@ -78,7 +80,7 @@ const AllBooks = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {books.map((book: IBook) => (
+            {books.data.map((book: IBook) => (
               <TableRow key={book._id}>
                 <TableCell>{book.title}</TableCell>
                 <TableCell>{book.author}</TableCell>
@@ -108,7 +110,7 @@ const AllBooks = () => {
                     </button>
                   </Link>
                   <button
-                    onClick={() => deleteHandler(book?._id)}
+                    onClick={() => deleteHandler(book?._id || '')}
                     className="text-red-600 cursor-pointer text-2xl"
                   >
                     <RiDeleteBin6Fill />
