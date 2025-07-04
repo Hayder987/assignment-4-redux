@@ -26,7 +26,7 @@ const AllBooks = () => {
   }
 
   // delete handler---------------------------->
-  const deleteHandler = (id: string) => {
+  const deleteHandler = (id) => {
     try {
       Swal.fire({
         title: "Are you sure?",
@@ -36,7 +36,7 @@ const AllBooks = () => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
-      }).then(async(result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
           await deleteBook(id).unwrap();
           Swal.fire({
@@ -77,7 +77,7 @@ const AllBooks = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {books.map((book) => (
+            {books.map((book: IBook) => (
               <TableRow key={book._id}>
                 <TableCell>{book.title}</TableCell>
                 <TableCell>{book.author}</TableCell>
@@ -107,9 +107,16 @@ const AllBooks = () => {
                   >
                     <RiDeleteBin6Fill />
                   </button>
-                  <button className="bg-green-700 rounded-md cursor-pointer text-white hover:underline py-1 px-2 ">
-                    Borrow
-                  </button>
+                  {
+                    book?.available?<Link to={`/borrow/${book?._id}`}>
+                    <button className="bg-green-700 rounded-md cursor-pointer text-white hover:underline py-1 px-2 ">
+                      Borrow
+                    </button>
+                  </Link>:
+                    <button className="bg-gray-300 rounded-md cursor-pointer hover:cursor-not-allowed py-1 px-2 ">
+                      Borrow
+                    </button>
+                  }
                 </TableCell>
               </TableRow>
             ))}
