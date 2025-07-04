@@ -14,6 +14,7 @@ import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { FcViewDetails } from "react-icons/fc";
 
 const AllBooks = () => {
   const { data, isLoading } = useGetBooksQuery(undefined, {
@@ -96,6 +97,11 @@ const AllBooks = () => {
                   )}
                 </TableCell>
                 <TableCell className="flex gap-3">
+                  <Link to={`/books/${book?._id}`}>
+                    <button className=" cursor-pointer text-2xl">
+                      <FcViewDetails />
+                    </button>
+                  </Link>
                   <Link to={`/edit-book/${book?._id}`}>
                     <button className="text-blue-600 cursor-pointer text-2xl">
                       <FaEdit />

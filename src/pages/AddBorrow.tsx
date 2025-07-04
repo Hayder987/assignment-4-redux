@@ -24,7 +24,7 @@ const AddBorrow = () => {
   const { data: book, isLoading } = useGetBookByIdQuery(bookId!, {
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
-    skip: !bookId, // ✅ skip query if bookId is undefined
+    skip: !bookId, 
   });
 
   const [borrowBook, { isLoading: isBorrowing }] = useCreateBorrowMutation();
