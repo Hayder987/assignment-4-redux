@@ -7,7 +7,7 @@ A clean, minimal, and fully functional **Library Management System** built with 
 
 ## 🚀 Live Demo
 
-[🔗 Live Link](https://your-deployment-url.com)
+[🔗 Live Link](https://library-management-redux.vercel.app)
 
 ---
 

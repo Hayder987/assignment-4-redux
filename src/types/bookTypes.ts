@@ -10,7 +10,7 @@ export interface IBook {
   available?: boolean;
   createdAt: string;      
   updatedAt: string;
-  data:{
+  data?:{
     title: string;
   author: string;
   genre:"FICTION" | "NON_FICTION" | "SCIENCE" | "HISTORY" | "BIOGRAPHY" | "FANTASY";
