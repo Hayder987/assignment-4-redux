@@ -30,7 +30,6 @@ const EditBooks = () => {
   });
   const [updateBook, { isLoading: isUpdating }] = useUpdateBookMutation();
   const navigate = useNavigate();
-  console.log(bookData)
   const {
     register,
     handleSubmit,

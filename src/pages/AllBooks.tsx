@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import { FcViewDetails } from "react-icons/fc";
 
 const AllBooks = () => {
+  // get all book
   const { data, isLoading } = useGetBooksQuery(undefined, {
     refetchOnFocus: true,
   });
@@ -53,7 +54,7 @@ const AllBooks = () => {
   };
 
   const books = data ?? [];
-  console.log(books)
+
 
 
   return (
